@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "chessboard.h"
+#include "chessboard.c"
 int main()
 {
   int x=0;
@@ -9,6 +10,7 @@ int main()
   scanf("%d",&x);
   printf("please enter a height value\n");
   scanf("%d",&y);
+  chessboardDefine(x,y,0);
   return 0;	
 }
 

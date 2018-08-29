@@ -7,7 +7,7 @@ int isACircle=0;
 int *path;
 int **chessboard;
 int recLevel=0;
-void chessboardDefine(int x,int y, int isCircular)
+void chessboardDefine(int x,int y, int isCircular)//remember to remove isCircular
 {
   path=malloc(x*y*sizeof(int));
   chessboard=(int**)malloc(sizeof(int*)*y);
