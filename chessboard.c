@@ -7,7 +7,7 @@ int isACircle=0;
 int *path;
 int **chessboard;
 int recLevel=0;
-void chessboardDefine(int x,int y, int isCircular)//remember to remove isCircular
+void chessboardDefine(int x,int y)
 {
   chessboard= (int**)malloc(x*sizeof(int*));
     for(int i=0;i<y;i++)
@@ -28,21 +28,13 @@ void chessboardDefine(int x,int y, int isCircular)//remember to remove isCircula
 
 void makeAMove(int xPos,int yPos,int xMax,int yMax)
   {
-    // printf("(%d, %d, %d) \n",xPos,yPos,recLevel);
-      // scanf("%d",&isACircle);
-
     visit(xPos,yPos);//mark this point as visited and increment the recursion level
   if(recLevel>=xMax*yMax-1)
-    {
-      //if the recursion has reached the point where all points must have been hit print the path
+    {//if the recursion has reached the point where all points must have been hit print the path
       char outpath[xMax*yMax*3];
       for(int i =0;i<xMax*yMax;i++)
 	{
-	  printf(" move %d is %d,",i,path[i]);
-	  if(i%5==4)
-	    {
-	      printf("\n");
-	    }
+	  printf("%d, ",path[i]);
 	}
       printf("\n");
     }

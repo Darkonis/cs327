@@ -1,3 +1,4 @@
+//this program was developed by Darron Anderson
 #include <stdio.h>
 #include <stdlib.h>
 #include "chessboard.h"
@@ -7,10 +8,10 @@ int main()
   int x=0;
   int y=0;
   printf("please enter a length value\n");
-  scanf("%d",&x);
+  scanf("%d",&x);//get the width of the chess board
   printf("please enter a height value\n");
-  scanf("%d",&y);
-  chessboardDefine(x,y,0);
+  scanf("%d",&y);//get the height of the chess board
+  chessboardDefine(x,y);
   return 0;	
 }
 
