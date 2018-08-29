@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include <stdlib.h>
 #include "chessboard.h"
 
@@ -36,7 +37,7 @@ void makeAMove(int xPos,int yPos,int xMax,int yMax)
     }
   
   
-  if(xPos+3<xMax)
+  if(xPos+3<xMax) // condition three right 1 up
     {
       if(yPos-1>=0)
 	{
@@ -46,13 +47,91 @@ void makeAMove(int xPos,int yPos,int xMax,int yMax)
 	    }
 	}
     }
+  if(xPos+3<xMax) //condition three right 1 one down
+    {
+      if(yPos+1<yMax)
+        {
+          if(chessboard[xPos+3][yPos+1]==0)
+            {
+              makeAMove(xPos+3,yPos+1,xMax,yMax);
+            }
+        }
+    }
+  if(xPos-3>=0)//condition 3 left 1 up
+    {
+      if(yPos-1>=0)
+        {
+          if(chessboard[xPos-3][yPos-1]==0)
+            {
+              makeAMove(xPos-3,yPos-1,xMax,yMax);
+            }
+        }
+    }
+    if(xPos-3>=0)//condition three left 1 down
+    {
+      if(yPos+1<yMax)
+        {
+          if(chessboard[xPos-3][yPos+1]==0)
+            {
+              makeAMove(xPos-3,yPos+1,xMax,yMax);
+            }
+	}
+    }
+ if(xPos+1<xMax) // condition 1 right 3 up                                                                                                                                                             
+    {
+      if(yPos-3>=0)
+        {
+          if(chessboard[xPos+3][yPos-1]==0)
+            {
+              makeAMove(xPos+3,yPos-1,xMax,yMax);
+            }
+        }
+    }
+  if(xPos+1<xMax) //condition 1 right 3 one down                                                                                                                                                        
+    {
+      if(yPos+3<yMax)
+        {
+          if(chessboard[xPos+3][yPos+1]==0)
+            {
+              makeAMove(xPos+3,yPos+1,xMax,yMax);
+            }
+	}
+    }
+  if(xPos-1>=0)//condition 1 left 3 up                                                                                                                                                                      
+    {
+      if(yPos-3>=0)
+        {
+          if(chessboard[xPos-3][yPos-1]==0)
+            {
+              makeAMove(xPos-3,yPos-1,xMax,yMax);
+            }
+	}
+    }
+    if(xPos-1>=0)//condition 1 left 3 down                                                                                                                                                              
+    {
+      if(yPos+3<yMax)
+        {
+          if(chessboard[xPos-3][yPos+1]==0)
+            {
+              makeAMove(xPos-3,yPos+1,xMax,yMax);
+            }
+	}
+    }
+
+    unvisit(xPos,yPos);
 }
 void visit(int xPos,int yPos)
 {
-  recLevel++;
+  
   path[recLevel]=(xPos+1);
+  chessboard[xPos][yPos]=1;
+
+
+
+  recLevel++;
 }
 void unvisit(int xPos, int yPos)
 {
-
+  chessboard[xPos][yPos]=0;
+    recLevel--;
 }
