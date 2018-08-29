@@ -28,112 +28,114 @@ void chessboardDefine(int x,int y, int isCircular)//remember to remove isCircula
 
 void makeAMove(int xPos,int yPos,int xMax,int yMax)
   {
-    printf("(%d, %d, %d) \n",xPos,yPos,recLevel);
-    //          scanf("%d",&isACircle);
+    // printf("(%d, %d, %d) \n",xPos,yPos,recLevel);
+      // scanf("%d",&isACircle);
 
     visit(xPos,yPos);//mark this point as visited and increment the recursion level
   if(recLevel>=xMax*yMax-1)
     {
       //if the recursion has reached the point where all points must have been hit print the path
       char outpath[xMax*yMax*3];
-      for(int i =0;i<xMax*yMax;i+=2)
+      for(int i =0;i<xMax*yMax;i++)
 	{
-	  outpath[i]=path[i];
-	  outpath[i+1]=',';
+	  printf(" move %d is %d,",i,path[i]);
+	  if(i%5==4)
+	    {
+	      printf("\n");
+	    }
 	}
-      printf("%s", outpath);//print the path to this point
+      printf("\n");
     }
   
-  if(xPos+3<xMax) // condition three right 1 up
+  if(xPos+2<xMax) // condition 2 right 1 up
     {
       if(yPos-1>=0)
 	{
-	  if(chessboard[xPos+3][yPos-1]==0)
+	  if(chessboard[xPos+2][yPos-1]==0)
 	    {
-	      makeAMove(xPos+3,yPos-1,xMax,yMax);
+	      makeAMove(xPos+2,yPos-1,xMax,yMax);
 	    }
 	}
     }
-  if(xPos+3<xMax) //condition three right 1 one down
+  if(xPos+2<xMax) //condition three right 1 one down
     {
       if(yPos+1<yMax)
         {
-          if(chessboard[xPos+3][yPos+1]==0)
+          if(chessboard[xPos+2][yPos+1]==0)
             {
-              makeAMove(xPos+3,yPos+1,xMax,yMax);
+              makeAMove(xPos+2,yPos+1,xMax,yMax);
             }
         }
     }
-  if(xPos-3>=0)//condition 3 left 1 up
+  if(xPos-2>=0)//condition 2 left 1 up
     {
       if(yPos-1>=0)
         {
-          if(chessboard[xPos-3][yPos-1]==0)
+          if(chessboard[xPos-2][yPos-1]==0)
             {
-              makeAMove(xPos-3,yPos-1,xMax,yMax);
+              makeAMove(xPos-2,yPos-1,xMax,yMax);
             }
         }
     }
-    if(xPos-3>=0)//condition three left 1 down
+    if(xPos-2>=0)//condition 2 left 1 down
     {
       if(yPos+1<yMax)
         {
-          if(chessboard[xPos-3][yPos+1]==0)
+          if(chessboard[xPos-2][yPos+1]==0)
             {
-              makeAMove(xPos-3,yPos+1,xMax,yMax);
+              makeAMove(xPos-2,yPos+1,xMax,yMax);
             }
 	}
     } 
- if(xPos+1<xMax) // condition 1 right 3 up                                                                                                                                                             
+ if(xPos+1<xMax) // condition 1 right 2 up                                   
     {
-      if(yPos-3>=0)
+      if(yPos-2>=0)
         {
 
-          if(chessboard[xPos+1][yPos-3]==0)
+          if(chessboard[xPos+1][yPos-2]==0)
             {
 	      
-              makeAMove(xPos+1,yPos-3,xMax,yMax);
+              makeAMove(xPos+1,yPos-2,xMax,yMax);
 
             }
         }
     }
-  if(xPos+1<xMax) //condition 1 right 3 down                              
+  if(xPos+1<xMax) //condition 1 right 2 down                              
     {
-      if(yPos+3<yMax)
+      if(yPos+2<yMax)
         {
-          if(chessboard[xPos+1][yPos+3]==0)
+          if(chessboard[xPos+1][yPos+2]==0)
             {
-              makeAMove(xPos+1,yPos+3,xMax,yMax);
+             makeAMove(xPos+1,yPos+2,xMax,yMax);
             }
 	}
     }
   
-  if(xPos-1>=0)//condition 1 left 3 up                                         
+  if(xPos-1>=0)//condition 1 left 2 up                                         
     {
-      if(yPos-3>=0)
+      if(yPos-2>=0)
         {
-          if(chessboard[xPos-1][yPos-3]==0)
+          if(chessboard[xPos-1][yPos-2]==0)
             {
-              makeAMove(xPos-1,yPos-3,xMax,yMax);
+              makeAMove(xPos-1,yPos-2,xMax,yMax);
             }
 	}
     }
-    if(xPos-1>=0)//condition 1 left 3 down                                     
+    if(xPos-1>=0)//condition 1 left 2 down                                     
     {
-      if(yPos+3<yMax)
+      if(yPos+2<yMax)
         {
-          if(chessboard[xPos-1][yPos+3]==0)
+          if(chessboard[xPos-1][yPos+2]==0)
             {
-              makeAMove(xPos-1,yPos+3,xMax,yMax);
+              makeAMove(xPos-1,yPos+2,xMax,yMax);
             }
 	}
     }
     unvisit(xPos,yPos);
-
 }
 void visit(int xPos,int yPos)
 {
-  path[recLevel]=(xPos+1)*(yPos+1);
+  path[recLevel]=(xPos+1)+(yPos*5);
   chessboard[xPos][yPos]=1;
 
   recLevel++;
